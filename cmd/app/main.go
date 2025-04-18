@@ -123,7 +123,9 @@ func main() {
 	}, h.SuccessPaymentHandler)
 
 	b.RegisterHandler(bot.HandlerTypeMessageText, "/broadcast", bot.MatchTypeExact, h.BroadcastCommandHandler)
+
 	b.RegisterHandler(bot.HandlerTypeMessageText, "", bot.MatchTypePrefix, h.BroadcastTextHandler)
+	
 	b.RegisterHandler(bot.HandlerTypeCallbackQueryData, "broadcast_", bot.MatchTypePrefix, h.BroadcastCallbackHandler)
 
 	slog.Info("Bot is starting...")
