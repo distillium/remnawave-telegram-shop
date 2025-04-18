@@ -27,5 +27,13 @@
   "trial_button": "🔥 Попробовать бесплатно",
   "trial_activated": "☑️ Пробный период активирован",
   "trial_text": "Ваша пробная версия действует",
-  "activate_trial_button": "Активировать пробную версию"
+  "activate_trial_button": "Активировать пробную версию",
+  "broadcast_send_prompt": "✉️ Отправьте сообщение (текст/медиа), которое вы хотите разослать.",
+  "broadcast_preview": "📤 Предпросмотр сообщения. Отправить всем пользователям?",
+  "broadcast_sent": "✅ Сообщение отправлено всем пользователям.",
+  "broadcast_canceled": "❌ Рассылка отменена.",
+  "broadcast_no_message": "⛔️ Нет сообщения для рассылки.",
+  "broadcast_send_button": "✅ Отправить",
+  "broadcast_cancel_button": "❌ Отменить",
+  "broadcast_access_denied": "🚫 У вас нет доступа к этой команде."
 }
