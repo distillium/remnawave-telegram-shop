@@ -1,5 +1,5 @@
 {
-  "greeting": "👋🏻 *Hello*\nThis is a bot for connecting to *VPN*🛡️\n\nAvailable locations:\n%s\n\n*How to connect:*\n• press the *\"Connect\"* button\n• follow the short instruction",
+  "greeting": "👋🏻 *Hello*\nThis is a bot for connecting to *STEALTH LINK*🛡️\n\nAvailable locations:\n%s\n\n*How to connect:*\n• press the *\"Connect\"* button\n• follow the short instruction",
   "buy_button": "💰 Buy",
   "connect_button": "🔌 Connect",
   "back_button": "🔙 Back",
@@ -27,5 +27,13 @@
   "trial_button": "🔥 Try for free",
   "trial_activated": "Trial period activated",
   "trial_text": "Your trial version is active",
-  "activate_trial_button": "Activate trial version"
+  "activate_trial_button": "Activate trial version",
+  "broadcast_send_prompt": "✉️ Please send the message (text/media) you want to broadcast.",
+  "broadcast_preview": "📤 Message preview. Do you want to send it to all users?",
+  "broadcast_sent": "✅ Message has been sent to all users.",
+  "broadcast_canceled": "❌ Broadcast canceled.",
+  "broadcast_no_message": "⛔️ No message to send.",
+  "broadcast_send_button": "✅ Send",
+  "broadcast_cancel_button": "❌ Cancel",
+  "broadcast_access_denied": "🚫 You do not have access to this command."
 }
