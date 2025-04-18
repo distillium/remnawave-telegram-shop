@@ -14,8 +14,8 @@ type CustomerRepository struct {
 	pool *pgxpool.Pool
 }
 
-func NewCustomerRepository(poll *pgxpool.Pool) *CustomerRepository {
-	return &CustomerRepository{pool: poll}
+func NewCustomerRepository(pool *pgxpool.Pool) *CustomerRepository {
+	return &CustomerRepository{pool: pool}
 }
 
 type Customer struct {
@@ -268,3 +268,24 @@ func (cr *CustomerRepository) UpdateBatch(ctx context.Context, customers []Custo
 	}
 	return nil
 }
+
+func (r *CustomerRepository) FindAll(ctx context.Context) ([]Customer, error) {
+	rows, err := r.pool.Query(ctx, "SELECT id, telegram_id, expire_at, subscription_link, language FROM customer")
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	var customers []Customer
+	for rows.Next() {
+		var c Customer
+		err := rows.Scan(&c.ID, &c.TelegramID, &c.ExpireAt, &c.SubscriptionLink, &c.Language)
+		if err != nil {
+			return nil, err
+		}
+		customers = append(customers, c)
+	}
+
+	return customers, nil
+}
+
