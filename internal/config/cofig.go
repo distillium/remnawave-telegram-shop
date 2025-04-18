@@ -13,7 +13,7 @@ type config struct {
 	price1                 int
 	price3                 int
 	price6                 int
-	price12                int
+	//price12                int
 	remnawaveUrl           string
 	remnawaveToken         string
 	remnawaveMode          string
@@ -109,9 +109,9 @@ func Price3() int {
 func Price6() int {
 	return conf.price6
 }
-func Price12() int {
-	return conf.price12
-}
+//func Price12() int {
+	//return conf.price12
+//}
 func TelegramToken() string {
 	return conf.telegramToken
 }
@@ -232,15 +232,15 @@ func InitConfig() {
 	}
 	conf.price6 = price6
 
-	strPrice12 := os.Getenv("PRICE_12")
-	if strPrice12 == "" {
-		panic("PRICE_12 .env variable not set")
-	}
-	price12, err := strconv.Atoi(strPrice12)
-	if err != nil {
-		panic(err)
-	}
-	conf.price12 = price12
+	//strPrice12 := os.Getenv("PRICE_12")
+	//if strPrice12 == "" {
+	//	panic("PRICE_12 .env variable not set")
+	//}
+	//price12, err := strconv.Atoi(strPrice12)
+	//if err != nil {
+	//	panic(err)
+	//}
+	//conf.price12 = price12
 
 	conf.remnawaveUrl = os.Getenv("REMNAWAVE_URL")
 	if conf.remnawaveUrl == "" {
