@@ -22,6 +22,7 @@ import (
 	"remnawave-tg-shop-bot/internal/sync"
 	"remnawave-tg-shop-bot/internal/translation"
 	"remnawave-tg-shop-bot/internal/yookasa"
+	"remnawave-tg-shop-bot/internal/broadcast"
 	"strconv"
 	"strings"
 )
@@ -76,7 +77,8 @@ func main() {
 
 	syncService := sync.NewSyncService(remnawaveClient, customerRepository)
 
-	h := handler.NewHandler(syncService, paymentService, tm, customerRepository, purchaseRepository, cryptoPayClient, yookasaClient)
+	broadcastService := broadcast.NewBroadcastService(customerRepository, b, config.GetAdminTelegramId(), tm)
+	h := handler.NewHandler(syncService, paymentService, tm, customerRepository, purchaseRepository, cryptoPayClient, yookasaClient, broadcastService)
 
 	me, err := b.GetMe(ctx)
 	if err != nil {
@@ -119,6 +121,10 @@ func main() {
 	b.RegisterHandlerMatchFunc(func(update *models.Update) bool {
 		return update.Message != nil && update.Message.SuccessfulPayment != nil
 	}, h.SuccessPaymentHandler)
+
+	b.RegisterHandler(bot.HandlerTypeMessageText, "/broadcast", bot.MatchTypeExact, h.BroadcastCommandHandler)
+	b.RegisterHandler(bot.HandlerTypeMessageText, "", bot.MatchTypePrefix, h.BroadcastTextHandler)
+	b.RegisterHandler(bot.HandlerTypeCallbackQueryData, "broadcast_", bot.MatchTypePrefix, h.BroadcastCallbackHandler)
 
 	slog.Info("Bot is starting...")
 	b.Start(ctx)
